@@ -29,6 +29,7 @@ async def main():
     task2 = asyncio.create_task(get('/bar'))
     group = asyncio.gather(task1, task2)
     await group
-    print(group)
+    for data in group.result():
+        print(data)
     print('took %.2f seconds' % (time.time() - start))
 asyncio.run(main())
